@@ -1,15 +1,15 @@
-# scripts/final_merge.py
+# scripts/final_merge.py (Final Robust Version)
 
 import pandas as pd
 from pathlib import Path
 
-print("Starting the final merge script...")
+print("Starting the final, robust merge script...")
 
 # --- 1. Define Paths ---
 PROJECT_ROOT = Path(__file__).parent.parent
 PROCESSED_PATH = PROJECT_ROOT / "data" / "processed"
 OUTPUT_PATH = PROJECT_ROOT / "output"
-OUTPUT_PATH.mkdir(exist_ok=True) 
+OUTPUT_PATH.mkdir(exist_ok=True)
 
 # --- 2. Load All Cleaned Datasets ---
 try:
@@ -23,36 +23,50 @@ except Exception as e:
     print(f"❌ Error loading a file. Details: {e}")
     exit()
 
-# --- 3. Prepare Datasets for Merging ---
-print("Preparing datasets for merging...")
+# --- 3. STANDARDİZE DISTRICT NAMES ACROSS ALL FILES ---
+print("Standardizing district names for a clean merge...")
 
-# AQI Data: Calculate annual average AQI for 2020
-df_aqi['date'] = pd.to_datetime(df_aqi['date'])
+# Function to create a clean, uppercase key for merging
+def create_merge_key(df, col_name):
+    # Ensure the column exists before trying to access .str
+    if col_name in df.columns:
+        df['merge_key'] = df[col_name].astype(str).str.upper().str.strip()
+    return df
+
+df_master = create_merge_key(df_master, 'DistrictName')
+df_aqi = create_merge_key(df_aqi.rename(columns={'city': 'DistrictName'}), 'DistrictName')
+df_forest = create_merge_key(df_forest.rename(columns={'district': 'DistrictName'}), 'DistrictName')
+df_vehicles = create_merge_key(df_vehicles, 'DistrictName')
+
+# --- 4. Prepare Datasets for Merging ---
+df_aqi['date'] = pd.to_datetime(df_aqi['date'], errors='coerce')
 df_aqi_2020 = df_aqi[df_aqi['date'].dt.year == 2020].copy()
-df_aqi_agg = df_aqi_2020.groupby('city')['aqi'].mean().reset_index()
-df_aqi_agg.rename(columns={'city': 'DistrictName', 'aqi': 'AvgAQI_2020'}, inplace=True)
+df_aqi_agg = df_aqi_2020.groupby('merge_key')['aqi'].mean().reset_index()
+df_aqi_agg.rename(columns={'aqi': 'AvgAQI_2020'}, inplace=True)
 
-# Forest Data: Ensure column names are consistent
-df_forest.rename(columns={'district': 'DistrictName'}, inplace=True)
-
-# --- 4. Merge Datasets ---
+# --- 5. Merge Datasets using the Standardized Key ---
 print("Merging datasets...")
-df_final = pd.merge(df_master, df_aqi_agg, on='DistrictName', how='left')
-df_final = pd.merge(df_final, df_forest, on='DistrictName', how='left')
-df_final = pd.merge(df_final, df_vehicles, on=['DistrictName', 'StateName'], how='left')
+df_final = pd.merge(df_master, df_aqi_agg, on='merge_key', how='left')
+df_final = pd.merge(df_final, df_forest, on='merge_key', how='left', suffixes=('', '_forest'))
+df_final = pd.merge(df_final, df_vehicles, on='merge_key', how='left', suffixes=('', '_vehicles'))
 
-# --- 5. Final Calculations (Example) ---
-print("Performing final calculations...")
-if 'total_forest_cover' in df_final.columns and 'DistrictVehicles_2020' in df_final.columns:
-    df_final['VehiclesPerCapita'] = df_final['DistrictVehicles_2020'] / df_final['Population']
-    df_final['ForestPerCapita_sqkm'] = df_final['total_forest_cover'] / df_final['Population']
+# --- 6. Clean Up and Finalize ---
+# This is the corrected part. We rename the columns we know and keep.
+df_final.rename(columns={
+    'total_forest_cover': 'TotalForestCover_sqkm',
+    'DistrictVehicles_2020': 'EstimatedVehicles_2020'
+}, inplace=True)
 
-# --- 6. Save the Final Master Dataset ---
+# --- 7. Final Imputation and Saving ---
+print("Filling any remaining missing values and saving...")
+cols_to_fill = ['AvgAQI_2020', 'TotalForestCover_sqkm', 'EstimatedVehicles_2020', 'Population']
+for col in cols_to_fill:
+    if col in df_final.columns:
+        df_final[col] = df_final.groupby('StateName')[col].transform(lambda x: x.fillna(x.mean()))
+df_final.fillna(0, inplace=True)
+
 output_filename = OUTPUT_PATH / "India_District_Environmental_Indicators.csv"
 df_final.to_csv(output_filename, index=False)
 
-print("\n\n" + "="*50)
-print("🎉 PROJECT COMPLETE! 🎉")
-print("="*50)
-print(f"\nYour final master dataset has been created and saved to:")
-print(output_filename) 
+print(f"\n✅ SUCCESS! Your final master dataset has been created.")
+print(f"File saved to: {output_filename}")

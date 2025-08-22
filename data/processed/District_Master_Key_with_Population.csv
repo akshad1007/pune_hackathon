@@ -329,7 +329,7 @@ LGD_Code,DistrictName,StateName,Population,MORTH_City_Name
 4,Doda,Jammu And Kashmir,,
 99,Dungarpur,Rajasthan,1388552.0,
 232,East Siang,Arunachal Pradesh,99214.0,
-555,Ernakulam,Kerala,3282388.0,Kochi
+555,Ernakulam,Kerala,3282388.0,
 138,Etah,Uttar Pradesh,1774480.0,
 141,Farrukhabad,Uttar Pradesh,1885204.0,
 61,Fatehabad,Haryana,942011.0,
@@ -371,7 +371,7 @@ LGD_Code,DistrictName,StateName,Population,MORTH_City_Name
 782,Kotputli-Behror,Rajasthan,,
 560,Kottayam,Kerala,1974551.0,
 561,Kozhikode,Kerala,3086293.0,Kozhikoda
-510,Krishna,Andhra Pradesh,4517398.0,Vijayawada
+510,Krishna,Andhra Pradesh,4517398.0,
 622,Kulgam,Jammu And Kashmir,,
 8,Kupwara,Jammu And Kashmir,,
 511,Kurnool,Andhra Pradesh,4053463.0,
