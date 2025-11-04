@@ -1,0 +1,4 @@
+,weather_api,openweather_api,geocoding_api,gemini_api,today_requests,cache_hit_rate,avg_response_time_ms,weather_data_age_minutes,aqi_data_age_minutes,traffic_data_age_minutes
+api_status,"{'status': 'active', 'last_update': '2025-08-31T18:36:00.338928', 'rate_limit': '1000/day'}","{'status': 'active', 'last_update': '2025-08-31T18:36:00.338928', 'rate_limit': '60/min'}","{'status': 'active', 'last_update': '2025-08-31T18:36:00.338928', 'rate_limit': '2500/day'}","{'status': 'active', 'last_update': '2025-08-31T18:36:00.338928', 'rate_limit': '15/min'}",,,,,,
+usage_stats,,,,,153.0,0.7818570326989269,275.22181439269065,,,
+data_freshness,,,,,,,,16.0,50.0,8.0

@@ -1,2 +1,154 @@
+# Add Python-specific ignores
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Model artifacts
+models/
+*.joblib
+*.h5
+*.pkl
+
+# Data processing outputs
+data/processed/
+data/temp/
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Reports and plots
+reports/
+plots/
+figures/
+
+# Node.js dependencies (HUGE space saver)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend build outputs
+AnantaNetra_AQI_Project/frontend/dist/
+AnantaNetra_AQI_Project/frontend/build/
+*.tsbuildinfo
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/pincode_database.db
+data/pincode_master.db
+AnantaNetra_AQI_Project/data/demo/demo_system.db
+
+# Large data files (>50MB should not be in git)
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+data/dataset/*.xls
+data/dataset/*.xlsx
+data/dataset/*Forest*.csv
+data/dataset/*Vehicle*.csv
+data/dataset/combined_aqi_data.csv
+data/dataset/AllIndiaBulletins*.csv
+data/dataset/2011-IndiaStateDistSbDistTwn-*.csv
+shared/data/geospatial/*.shp
+shared/data/geospatial/*.shx
+shared/data/geospatial/*.dbf
+shared/data/geospatial/*.prj
+
+# PDF files (can be large)
+*.pdf
+docs/*.pdf
+
+# Large CSV files
+data/dataset/Pincode_Dataset.csv
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Docker volumes (if any)
 /source_repos/
-/venv/ 
