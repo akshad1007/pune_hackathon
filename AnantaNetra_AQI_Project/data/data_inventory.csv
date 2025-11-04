@@ -1,0 +1,11 @@
+dataset,rows,columns,time_range,frequency,last_update,source_url,license,sample_file
+maharashtra_factories,20894,12,2020-2025,Annual,2025-08-29,https://mpcb.gov.in/industrial-directory,Government Open Data,maharashtra_factories_list.csv
+forest_coordinates,15247,8,2023-2024,Quarterly,2024-06-15,https://fsi.nic.in/forest-report,CC BY 4.0,forest_coordinates.csv
+complete_forest_districts,36,15,2023-2024,Annual,2024-03-20,https://fsi.nic.in/district-data,CC BY 4.0,complete_forest_districts.csv
+forest_weather_sample,2847,11,2023-2025,Daily,2025-08-30,https://imd.gov.in/weather-data,Open Access,forest_weather_sample.csv
+consolidated_factory_data,20894,18,2020-2025,Annual,2025-08-29,Multiple Government Sources,Government Open Data,consolidated_factory_data.csv
+pincode_database,15037,9,2023-2024,Static,2024-01-15,https://data.gov.in/postal-data,Public Domain,input_coordinates.csv
+aqi_monitoring_stations,1205,7,Real-time,Hourly,2025-08-30,https://cpcb.nic.in/aqm-data,Public Domain,real-time-aqi-data.json
+weather_stations,2847,12,Real-time,15-minutes,2025-08-30,https://imd.gov.in/stations,Open Access,weather-api-data.json
+environmental_news,variable,8,Real-time,Hourly,2025-08-30,https://newsapi.org,Commercial API,news-api-response.json
+ai_analysis_data,variable,10,On-demand,As-needed,2025-08-30,https://ai.google.dev/gemini-api,Commercial API,gemini-analysis.json

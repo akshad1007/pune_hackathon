@@ -1,0 +1,14 @@
+{
+  "creation_timestamp": "2025-08-31T18:36:00.505179",
+  "data_summary": {
+    "cities_covered": 8,
+    "data_components": 8,
+    "total_factories": 125,
+    "avg_aqi": 157.13911180050377
+  },
+  "file_locations": {
+    "main_data": "data/demo/comprehensive_demo_data.json",
+    "database": "data/demo/demo_system.db",
+    "csv_files": "data/demo/*.csv"
+  }
+}

@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, backgrounds}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+    node distance=2cm,
+    data/.style={rectangle, rounded corners=5pt, minimum width=2.8cm, minimum height=1cm, text centered, draw=blue!60, fill=blue!5, thick, font=\small},
+    process/.style={rectangle, rounded corners=5pt, minimum width=3.5cm, minimum height=1cm, text centered, draw=green!60, fill=green!5, thick, font=\small},
+    model/.style={diamond, minimum width=2.5cm, minimum height=1cm, text centered, draw=red!60, fill=red!5, thick, font=\small, aspect=2},
+    output/.style={rectangle, rounded corners=5pt, minimum width=2.8cm, minimum height=1cm, text centered, draw=purple!60, fill=purple!5, thick, font=\small},
+    arrow/.style={->, >=stealth, thick, draw=gray!70}
+]
+
+% Input Data Layer - horizontal arrangement
+\node[data] (weather) at (0,8) {Weather Data};
+\node[data] (industrial) at (3,8) {Industrial Data};
+\node[data] (demographic) at (6,8) {Demographic Data};
+\node[data] (geospatial) at (9,8) {Geospatial Data};
+
+% Data Processing Layer
+\node[process] (preprocessing) at (4.5,6) {Data Preprocessing};
+\node[process] (fusion) at (4.5,4.5) {Feature Engineering};
+
+% Machine Learning Layer
+\node[model] (lstm) at (2,2.5) {LSTM Network};
+\node[model] (xgboost) at (7,2.5) {XGBoost};
+
+% Ensemble Layer
+\node[process] (ensemble) at (4.5,0.5) {Hybrid Ensemble};
+
+% Output Layer
+\node[output] (aqi) at (1,-1.5) {AQI Prediction};
+\node[output] (health) at (4.5,-1.5) {Health Advisory};
+\node[output] (policy) at (8,-1.5) {Policy Support};
+
+% Arrows
+\draw[arrow] (weather) -- (preprocessing);
+\draw[arrow] (industrial) -- (preprocessing);
+\draw[arrow] (demographic) -- (preprocessing);
+\draw[arrow] (geospatial) -- (preprocessing);
+\draw[arrow] (preprocessing) -- (fusion);
+\draw[arrow] (fusion) -- (lstm);
+\draw[arrow] (fusion) -- (xgboost);
+\draw[arrow] (lstm) -- (ensemble);
+\draw[arrow] (xgboost) -- (ensemble);
+\draw[arrow] (ensemble) -- (aqi);
+\draw[arrow] (ensemble) -- (health);
+\draw[arrow] (ensemble) -- (policy);
+
+\end{tikzpicture}
+\caption{System Architecture Test}
+\end{figure}
+
+\end{document}

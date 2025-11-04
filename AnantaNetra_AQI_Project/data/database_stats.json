@@ -1,0 +1,31 @@
+{
+  "total_pin_codes": 15037,
+  "unique_states": 30,
+  "unique_districts": 568,
+  "weather_zones": 500,
+  "pollution_zones": 200,
+  "regions": {
+    "South": 6294,
+    "West": 3452,
+    "East": 2726,
+    "North": 2016,
+    "Central": 549
+  },
+  "pins_per_weather_zone": {
+    "min": 1,
+    "max": 66,
+    "avg": 30.074
+  },
+  "pins_per_pollution_zone": {
+    "min": 1,
+    "max": 142,
+    "avg": 75.185
+  },
+  "api_optimization": {
+    "original_api_calls_needed": 15037,
+    "weather_api_calls_needed": 500,
+    "pollution_api_calls_needed": 200,
+    "weather_efficiency": 96.67486865731196,
+    "pollution_efficiency": 98.6699474629248
+  }
+}

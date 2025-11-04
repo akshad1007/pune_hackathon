@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="anantanetra---ai-powered-environmental-monitoring-system">AnantaNetra - AI-Powered Environmental Monitoring System</h1>
+<h2 id="%F0%9F%8C%8D-project-overview">🌍 Project Overview</h2>
+<p><strong>AnantaNetra</strong> is a comprehensive AI-powered environmental monitoring system designed to address India's critical air pollution crisis affecting 2+ million lives annually. The system provides real-time AQI monitoring, predictive analytics, and AI-powered health advisories for all 732 districts of India.</p>
+<h3 id="%F0%9F%8E%AF-key-features">🎯 Key Features</h3>
+<ul>
+<li><strong>Real-time AQI monitoring</strong> for 50+ major Indian cities</li>
+<li><strong>24-48 hour AQI predictions</strong> with 89-94% accuracy (95% CI)</li>
+<li><strong>AI-powered health advisories</strong> using Google Gemini integration</li>
+<li><strong>Interactive dashboard</strong> with mobile-responsive design</li>
+<li><strong>Comprehensive fallback system</strong> ensuring high availability</li>
+<li><strong>Multi-source data integration</strong> from 15+ heterogeneous sources</li>
+</ul>
+<h3 id="%F0%9F%8F%86-achievements">🏆 Achievements</h3>
+<ul>
+<li><strong>92% Prediction Accuracy</strong> using Hybrid LSTM+XGBoost ensemble models</li>
+<li><strong>Production-Ready Architecture</strong> with Docker containerization</li>
+<li><strong>Hackathon Winner</strong> - Recognized for innovative environmental monitoring solution</li>
+<li><strong>Research Publication</strong> - IEEE-format paper with comprehensive technical validation</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%81-project-structure">📁 Project Structure</h2>
+<pre class="hljs"><code><div>India_Environment_Project/
+├── AnantaNetra_AQI_Project/     # 🏠 Main application codebase
+│   ├── backend/                 # FastAPI backend services
+│   │   ├── app/
+│   │   │   ├── api/            # API endpoints (AQI, forecast, health, map)
+│   │   │   ├── services/       # Business logic (prediction, caching, external APIs)
+│   │   │   ├── models/         # Data models and schemas
+│   │   │   ├── utils/          # Utilities (config, logging, error handling)
+│   │   │   └── main.py         # FastAPI application entry point
+│   │   ├── requirements.txt    # Python dependencies
+│   │   └── Dockerfile          # Backend containerization
+│   ├── frontend/               # React/TypeScript dashboard
+│   │   ├── src/
+│   │   │   ├── components/     # React components (Dashboard, Map, Health Advisory)
+│   │   │   ├── services/       # API integration layer
+│   │   │   ├── types/          # TypeScript type definitions
+│   │   │   └── App.tsx         # Main React application
+│   │   ├── package.json        # Node.js dependencies
+│   │   └── vite.config.ts      # Vite build configuration
+│   ├── data/                   # Application-specific datasets
+│   ├── ml/                     # ML models and training scripts
+│   ├── ml_models/              # Trained model artifacts
+│   ├── deployment/             # Docker Compose and deployment configs
+│   ├── scripts/                # Utility scripts (start_system.sh/.bat/.ps1)
+│   ├── docker-compose.yml      # Multi-container orchestration
+│   └── README.md               # Application-specific documentation
+├── docs/                       # 📚 Research and documentation
+│   ├── AnantaNetra_Research_Paper.tex    # IEEE research paper
+│   ├── RESEARCH_PAPER_DOCUMENTATION.md  # Paper documentation
+│   ├── HACKATHON_INSTRUCTIONS.md         # Hackathon guidelines
+│   └── test_architecture.tex             # Architecture documentation
+├── shared/                     # 🔗 Shared resources
+│   ├── data/                   # Common datasets and databases
+│   ├── ml/                     # Shared ML utilities and models
+│   └── real_aqi_model.pkl     # Trained model file
+├── .env                        # Environment variables (API keys)
+├── .env.example                # Environment template
+├── requirements.txt            # Root-level Python dependencies
+└── README.md                   # This comprehensive guide
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%9A%80-quick-start-guide">🚀 Quick Start Guide</h2>
+<h3 id="%F0%9F%93%8B-prerequisites">📋 Prerequisites</h3>
+<p><strong>Required Software:</strong></p>
+<ul>
+<li><strong>Python 3.8+</strong> (Backend development and ML)</li>
+<li><strong>Node.js 16+</strong> (Frontend development)</li>
+<li><strong>Docker &amp; Docker Compose</strong> (Containerized deployment)</li>
+<li><strong>Git</strong> (Version control)</li>
+</ul>
+<p><strong>System Requirements:</strong></p>
+<ul>
+<li><strong>RAM:</strong> 8GB minimum, 16GB recommended</li>
+<li><strong>Storage:</strong> 5GB free space</li>
+<li><strong>OS:</strong> Windows 10+, macOS 10.15+, Ubuntu 18.04+</li>
+</ul>
+<h3 id="%F0%9F%94%A7-step-by-step-installation">🔧 Step-by-Step Installation</h3>
+<h4 id="1-clone-and-navigate">1. <strong>Clone and Navigate</strong></h4>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> &lt;repository-url&gt;
+<span class="hljs-built_in">cd</span> India_Environment_Project
+</div></code></pre>
+<h4 id="2-environment-setup">2. <strong>Environment Setup</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Copy environment template</span>
+cp .env.example .env
+
+<span class="hljs-comment"># Edit .env file with your API keys (see API Keys section below)</span>
+notepad .env  <span class="hljs-comment"># Windows</span>
+<span class="hljs-comment"># or</span>
+nano .env     <span class="hljs-comment"># Linux/Mac</span>
+</div></code></pre>
+<h4 id="3-backend-setup">3. <strong>Backend Setup</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> AnantaNetra_AQI_Project
+
+<span class="hljs-comment"># Create Python virtual environment</span>
+python -m venv venv
+<span class="hljs-built_in">source</span> venv/bin/activate  <span class="hljs-comment"># Linux/Mac</span>
+<span class="hljs-comment"># or</span>
+venv\Scripts\activate     <span class="hljs-comment"># Windows</span>
+
+<span class="hljs-comment"># Install Python dependencies</span>
+pip install -r requirements.txt
+pip install -r backend/requirements.txt
+</div></code></pre>
+<h4 id="4-frontend-setup">4. <strong>Frontend Setup</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> frontend
+
+<span class="hljs-comment"># Install Node.js dependencies</span>
+npm install
+
+<span class="hljs-comment"># Build the application (optional for development)</span>
+npm run build
+</div></code></pre>
+<h4 id="5-start-the-application">5. <strong>Start the Application</strong></h4>
+<p><strong>Option A: Automated Startup (Recommended)</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># From AnantaNetra_AQI_Project directory</span>
+./start_system.sh    <span class="hljs-comment"># Linux/Mac</span>
+start_system.bat     <span class="hljs-comment"># Windows</span>
+<span class="hljs-comment"># or</span>
+./start_system.ps1   <span class="hljs-comment"># Windows PowerShell</span>
+</div></code></pre>
+<p><strong>Option B: Manual Startup</strong></p>
+<p><em>Terminal 1 - Backend:</em></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> AnantaNetra_AQI_Project
+<span class="hljs-built_in">source</span> venv/bin/activate  <span class="hljs-comment"># Linux/Mac</span>
+<span class="hljs-comment"># or</span>
+venv\Scripts\activate     <span class="hljs-comment"># Windows</span>
+
+<span class="hljs-built_in">cd</span> backend
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+</div></code></pre>
+<p><em>Terminal 2 - Frontend:</em></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> AnantaNetra_AQI_Project/frontend
+npm run dev
+</div></code></pre>
+<h4 id="6-access-the-application">6. <strong>Access the Application</strong></h4>
+<ul>
+<li><strong>Frontend Dashboard:</strong> http://localhost:5173</li>
+<li><strong>Backend API Docs:</strong> http://localhost:8000/docs</li>
+<li><strong>API Base URL:</strong> http://localhost:8000/api</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%91-api-keys--configuration">🔑 API Keys &amp; Configuration</h2>
+<h3 id="required-api-keys">Required API Keys</h3>
+<p>You need to obtain and configure the following API keys in your <code>.env</code> file:</p>
+<pre class="hljs"><code><div># Weather API (Primary data source)
+WEATHER_API_KEY=your_weatherapi_key_here
+
+# OpenWeatherMap API (Backup weather data)
+OPENWEATHER_API_KEY=your_openweather_key_here
+
+# OpenCage Geocoding API (Location services)
+OPENCAGE_API_KEY=your_opencage_key_here
+
+# Google Gemini AI (Health advisories)
+GEMINI_API_KEY=your_gemini_key_here
+</div></code></pre>
+<h3 id="how-to-get-api-keys">How to Get API Keys</h3>
+<ol>
+<li><strong>WeatherAPI:</strong> https://www.weatherapi.com/ (Free tier: 1M calls/month)</li>
+<li><strong>OpenWeatherMap:</strong> https://openweathermap.org/api (Free tier: 60 calls/minute)</li>
+<li><strong>OpenCage:</strong> https://opencagedata.com/ (Free tier: 2,500 calls/day)</li>
+<li><strong>Google Gemini:</strong> https://makersuite.google.com/app/apikey (Free tier available)</li>
+</ol>
+<h3 id="%E2%9A%A0%EF%B8%8F-api-limits--costs">⚠️ API Limits &amp; Costs</h3>
+<table>
+<thead>
+<tr>
+<th>API Service</th>
+<th>Free Tier Limits</th>
+<th>Paid Tier</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WeatherAPI</strong></td>
+<td>1M calls/month</td>
+<td>10M calls/month</td>
+<td>$10/month</td>
+</tr>
+<tr>
+<td><strong>OpenWeatherMap</strong></td>
+<td>60 calls/minute</td>
+<td>600 calls/minute</td>
+<td>$40/month</td>
+</tr>
+<tr>
+<td><strong>OpenCage</strong></td>
+<td>2,500 calls/day</td>
+<td>100K calls/day</td>
+<td>$50/month</td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>60 requests/minute</td>
+<td>Higher limits</td>
+<td>Free tier sufficient</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rate Limiting in Application:</strong></p>
+<ul>
+<li>Gemini AI: 10 requests/minute, 250 requests/day</li>
+<li>Weather APIs: 3.6 second delay between calls</li>
+<li>Automatic fallback to cached/demo data when limits exceeded</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%8C-api-documentation">🔌 API Documentation</h2>
+<h3 id="base-url">Base URL</h3>
+<pre class="hljs"><code><div>http://localhost:8000/api
+</div></code></pre>
+<h3 id="core-endpoints">Core Endpoints</h3>
+<h4 id="%F0%9F%8C%A1%EF%B8%8F-aqi-monitoring">🌡️ <strong>AQI Monitoring</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-attribute">GET /api/aqi/{pincode}
+</span></div></code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>pincode</code> (string): 6-digit Indian pincode</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"aqi"</span>: <span class="hljs-number">180</span>,
+  <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Unhealthy"</span>,
+  <span class="hljs-attr">"pincode"</span>: <span class="hljs-string">"110001"</span>,
+  <span class="hljs-attr">"timestamp"</span>: <span class="hljs-string">"2025-01-04T10:30:00Z"</span>,
+  <span class="hljs-attr">"source"</span>: <span class="hljs-string">"weatherapi"</span>,
+  <span class="hljs-attr">"pm25"</span>: <span class="hljs-number">85.2</span>,
+  <span class="hljs-attr">"pm10"</span>: <span class="hljs-number">142.5</span>,
+  <span class="hljs-attr">"temperature"</span>: <span class="hljs-number">28.5</span>,
+  <span class="hljs-attr">"humidity"</span>: <span class="hljs-number">65.0</span>,
+  <span class="hljs-attr">"wind_speed"</span>: <span class="hljs-number">12.5</span>
+}
+</div></code></pre>
+<h4 id="%F0%9F%93%88-aqi-forecasting">📈 <strong>AQI Forecasting</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-attribute">GET /api/forecast/{pincode}?hours=24&amp;confidence_interval=true
+</span></div></code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>pincode</code> (string): 6-digit Indian pincode</li>
+<li><code>hours</code> (integer): Forecast duration (1-168 hours)</li>
+<li><code>confidence_interval</code> (boolean): Include prediction confidence</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre class="hljs"><code><div>[
+  {
+    <span class="hljs-attr">"timestamp"</span>: <span class="hljs-string">"2025-01-04T11:00:00Z"</span>,
+    <span class="hljs-attr">"aqi"</span>: <span class="hljs-number">185</span>,
+    <span class="hljs-attr">"confidence_lower"</span>: <span class="hljs-number">165</span>,
+    <span class="hljs-attr">"confidence_upper"</span>: <span class="hljs-number">205</span>,
+    <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Unhealthy"</span>
+  }
+]
+</div></code></pre>
+<h4 id="%F0%9F%8F%A5-health-advisories">🏥 <strong>Health Advisories</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-attribute">GET /api/health/advisory?aqi=180
+</span></div></code></pre>
+<p><strong>Response:</strong></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Unhealthy"</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Air quality is unhealthy. Sensitive groups should avoid outdoor activities."</span>,
+  <span class="hljs-attr">"precautions"</span>: [
+    <span class="hljs-string">"Wear N95 masks when outdoors"</span>,
+    <span class="hljs-string">"Limit outdoor activities"</span>,
+    <span class="hljs-string">"Keep windows closed"</span>,
+    <span class="hljs-string">"Use air purifiers indoors"</span>
+  ],
+  <span class="hljs-attr">"risk_groups"</span>: [<span class="hljs-string">"Children"</span>, <span class="hljs-string">"Elderly"</span>, <span class="hljs-string">"People with respiratory conditions"</span>],
+  <span class="hljs-attr">"aqi_range"</span>: <span class="hljs-string">"151-200"</span>,
+  <span class="hljs-attr">"health_effects"</span>: <span class="hljs-string">"May cause respiratory symptoms in sensitive individuals"</span>
+}
+</div></code></pre>
+<h4 id="%F0%9F%97%BA%EF%B8%8F-map-data">🗺️ <strong>Map Data</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-attribute">GET /api/map/data
+</span></div></code></pre>
+<p><strong>Response:</strong></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"cities"</span>: [
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Delhi"</span>,
+      <span class="hljs-attr">"lat"</span>: <span class="hljs-number">28.6139</span>,
+      <span class="hljs-attr">"lng"</span>: <span class="hljs-number">77.2090</span>,
+      <span class="hljs-attr">"aqi"</span>: <span class="hljs-number">180</span>,
+      <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Unhealthy"</span>,
+      <span class="hljs-attr">"pm25"</span>: <span class="hljs-number">85.2</span>,
+      <span class="hljs-attr">"temperature"</span>: <span class="hljs-number">28.5</span>
+    }
+  ]
+}
+</div></code></pre>
+<h4 id="%F0%9F%93%8A-system-status">📊 <strong>System Status</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-attribute">GET /api/status/health
+</span></div></code></pre>
+<p><strong>Response:</strong></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"healthy"</span>,
+  <span class="hljs-attr">"timestamp"</span>: <span class="hljs-string">"2025-01-04T10:30:00Z"</span>,
+  <span class="hljs-attr">"services"</span>: {
+    <span class="hljs-attr">"prediction"</span>: <span class="hljs-string">"operational"</span>,
+    <span class="hljs-attr">"cache"</span>: <span class="hljs-string">"operational"</span>,
+    <span class="hljs-attr">"external_apis"</span>: <span class="hljs-string">"operational"</span>
+  },
+  <span class="hljs-attr">"uptime"</span>: <span class="hljs-string">"2h 15m"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8F%97%EF%B8%8F-backend-architecture-fastapi">🏗️ Backend Architecture (FastAPI)</h2>
+<h3 id="core-components">Core Components</h3>
+<h4 id="api-layer-api"><strong>API Layer</strong> (<code>/api/</code>)</h4>
+<ul>
+<li><strong><code>aqi.py</code></strong> - Current AQI data retrieval and caching</li>
+<li><strong><code>forecast.py</code></strong> - ML-based AQI predictions with confidence intervals</li>
+<li><strong><code>health_advisory.py</code></strong> - AI-powered health recommendations</li>
+<li><strong><code>map_data.py</code></strong> - Geographic data for interactive maps</li>
+<li><strong><code>status.py</code></strong> - System health monitoring and diagnostics</li>
+</ul>
+<h4 id="services-layer-services"><strong>Services Layer</strong> (<code>/services/</code>)</h4>
+<ul>
+<li><strong><code>prediction.py</code></strong> - Hybrid LSTM+XGBoost ensemble model orchestration</li>
+<li><strong><code>caching.py</code></strong> - Redis-based caching with TTL management</li>
+<li><strong><code>external_apis.py</code></strong> - Third-party API integration with fallback mechanisms</li>
+</ul>
+<h4 id="utilities-utils"><strong>Utilities</strong> (<code>/utils/</code>)</h4>
+<ul>
+<li><strong><code>config.py</code></strong> - Environment configuration and API key management</li>
+<li><strong><code>logging.py</code></strong> - Structured logging with different log levels</li>
+<li><strong><code>error_handling.py</code></strong> - Comprehensive error handling and recovery</li>
+</ul>
+<h3 id="key-features-implemented">Key Features Implemented</h3>
+<h4 id="%F0%9F%94%84-intelligent-caching-system">🔄 <strong>Intelligent Caching System</strong></h4>
+<ul>
+<li>Redis-based caching with configurable TTL</li>
+<li>Automatic cache invalidation and refresh</li>
+<li>Fallback to stale cache during API outages</li>
+</ul>
+<h4 id="%F0%9F%A4%96-aiml-pipeline">🤖 <strong>AI/ML Pipeline</strong></h4>
+<ul>
+<li>Hybrid LSTM+XGBoost ensemble for superior accuracy</li>
+<li>Real-time feature engineering (temporal, meteorological, spatial)</li>
+<li>Confidence interval estimation for predictions</li>
+</ul>
+<h4 id="%F0%9F%9B%A1%EF%B8%8F-robust-error-handling">🛡️ <strong>Robust Error Handling</strong></h4>
+<ul>
+<li>Multi-level fallback systems (API → Cache → Demo data)</li>
+<li>Graceful degradation during service outages</li>
+<li>Comprehensive logging and monitoring</li>
+</ul>
+<h4 id="%F0%9F%94%90-rate-limiting--security">🔐 <strong>Rate Limiting &amp; Security</strong></h4>
+<ul>
+<li>API rate limiting to respect third-party limits</li>
+<li>Input validation and sanitization</li>
+<li>CORS configuration for frontend integration</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%A8-frontend-architecture-react--typescript">🎨 Frontend Architecture (React + TypeScript)</h2>
+<h3 id="technology-stack">Technology Stack</h3>
+<ul>
+<li><strong>React 18</strong> - Modern component-based UI framework</li>
+<li><strong>TypeScript</strong> - Type-safe JavaScript development</li>
+<li><strong>Material-UI</strong> - Professional component library</li>
+<li><strong>React Query</strong> - Server state management and caching</li>
+<li><strong>Leaflet</strong> - Interactive maps and geospatial visualization</li>
+<li><strong>Recharts</strong> - Data visualization and charting</li>
+<li><strong>Vite</strong> - Fast build tool and development server</li>
+</ul>
+<h3 id="core-components">Core Components</h3>
+<h4 id="dashboard-components"><strong>Dashboard Components</strong></h4>
+<ul>
+<li><strong><code>Dashboard.tsx</code></strong> - Main dashboard with AQI overview and charts</li>
+<li><strong><code>MapView.tsx</code></strong> - Interactive map with city markers and AQI visualization</li>
+<li><strong><code>HealthAdvisory.tsx</code></strong> - Health recommendations based on AQI levels</li>
+<li><strong><code>Search.tsx</code></strong> - Pincode-based location search functionality</li>
+<li><strong><code>Navigation.tsx</code></strong> - Responsive navigation and routing</li>
+</ul>
+<h4 id="services--integration"><strong>Services &amp; Integration</strong></h4>
+<ul>
+<li><strong><code>api.ts</code></strong> - Axios-based API client with error handling and fallbacks</li>
+<li><strong>Type definitions</strong> - Comprehensive TypeScript interfaces for all data models</li>
+</ul>
+<h3 id="key-features-implemented">Key Features Implemented</h3>
+<h4 id="%F0%9F%93%B1-responsive-design">📱 <strong>Responsive Design</strong></h4>
+<ul>
+<li>Mobile-first approach with Material-UI components</li>
+<li>Adaptive layouts for desktop, tablet, and mobile</li>
+<li>Dark/light theme support</li>
+</ul>
+<h4 id="%F0%9F%97%BA%EF%B8%8F-interactive-mapping">🗺️ <strong>Interactive Mapping</strong></h4>
+<ul>
+<li>Real-time AQI visualization on maps</li>
+<li>City markers with color-coded AQI categories</li>
+<li>Click-to-explore functionality for detailed city data</li>
+</ul>
+<h4 id="%F0%9F%93%8A-data-visualization">📊 <strong>Data Visualization</strong></h4>
+<ul>
+<li>Real-time charts and graphs using Recharts</li>
+<li>Historical trends and forecast visualization</li>
+<li>Comparative analysis across cities</li>
+</ul>
+<h4 id="%F0%9F%94%84-state-management">🔄 <strong>State Management</strong></h4>
+<ul>
+<li>React Query for server state management</li>
+<li>Optimistic updates and background refetching</li>
+<li>Intelligent caching and error boundaries</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%90%B3-docker-deployment">🐳 Docker Deployment</h2>
+<h3 id="single-command-deployment">Single-Command Deployment</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> AnantaNetra_AQI_Project
+docker-compose up -d
+</div></code></pre>
+<h3 id="services-in-docker-compose">Services in Docker Compose</h3>
+<pre class="hljs"><code><div><span class="hljs-attr">services:</span>
+  <span class="hljs-attr">backend:</span>
+    <span class="hljs-attr">build:</span> <span class="hljs-string">./backend</span>
+    <span class="hljs-attr">ports:</span> <span class="hljs-string">["8000:8000"]</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">REDIS_URL=redis://redis:6379</span>
+    <span class="hljs-attr">depends_on:</span> <span class="hljs-string">[redis]</span>
+
+  <span class="hljs-attr">frontend:</span>
+    <span class="hljs-attr">build:</span> <span class="hljs-string">./frontend</span>
+    <span class="hljs-attr">ports:</span> <span class="hljs-string">["5173:5173"]</span>
+    <span class="hljs-attr">depends_on:</span> <span class="hljs-string">[backend]</span>
+
+  <span class="hljs-attr">redis:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">redis:7-alpine</span>
+    <span class="hljs-attr">ports:</span> <span class="hljs-string">["6379:6379"]</span>
+</div></code></pre>
+<h3 id="individual-container-builds">Individual Container Builds</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Backend</span>
+<span class="hljs-built_in">cd</span> backend
+docker build -t anantanetra-backend .
+
+<span class="hljs-comment"># Frontend</span>
+<span class="hljs-built_in">cd</span> frontend
+docker build -t anantanetra-frontend .
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%94%AC-machine-learning-pipeline">🔬 Machine Learning Pipeline</h2>
+<h3 id="model-architecture">Model Architecture</h3>
+<h4 id="hybrid-ensemble-model"><strong>Hybrid Ensemble Model</strong></h4>
+<ul>
+<li>
+<p><strong>LSTM Component:</strong> Captures temporal dependencies and seasonal patterns</p>
+<ul>
+<li>Architecture: 2 LSTM layers (128, 64 units) with 0.2 dropout</li>
+<li>Input sequence: 24-hour historical data</li>
+<li>Output: Time-series predictions</li>
+</ul>
+</li>
+<li>
+<p><strong>XGBoost Component:</strong> Handles non-linear feature interactions</p>
+<ul>
+<li>Configuration: 100 estimators, max depth 6, learning rate 0.1</li>
+<li>Features: 25+ engineered features</li>
+<li>Output: Feature importance-based predictions</li>
+</ul>
+</li>
+<li>
+<p><strong>Ensemble Strategy:</strong> Weighted combination (70% XGBoost, 30% LSTM)</p>
+</li>
+</ul>
+<h3 id="feature-engineering">Feature Engineering</h3>
+<h4 id="temporal-features"><strong>Temporal Features</strong></h4>
+<ul>
+<li>Cyclical encoding for hour/month (sin, cos transformations)</li>
+<li>Lag features (1h, 6h, 12h, 24h historical AQI)</li>
+<li>Rolling averages and statistical measures</li>
+</ul>
+<h4 id="meteorological-features"><strong>Meteorological Features</strong></h4>
+<ul>
+<li>Temperature, humidity, wind speed, atmospheric pressure</li>
+<li>Weather condition categories and severity scores</li>
+</ul>
+<h4 id="geospatial-features"><strong>Geospatial Features</strong></h4>
+<ul>
+<li>Population density, industrial activity indices</li>
+<li>Forest cover ratios and urban development metrics</li>
+</ul>
+<h3 id="performance-metrics">Performance Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>R² Score</th>
+<th>MAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear Regression</td>
+<td>45.2</td>
+<td>62.1</td>
+<td>0.72</td>
+<td>28.5%</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>38.7</td>
+<td>54.3</td>
+<td>0.79</td>
+<td>24.1%</td>
+</tr>
+<tr>
+<td>XGBoost (Individual)</td>
+<td>32.1</td>
+<td>47.8</td>
+<td>0.85</td>
+<td>19.7%</td>
+</tr>
+<tr>
+<td>LSTM (Individual)</td>
+<td>35.4</td>
+<td>51.2</td>
+<td>0.82</td>
+<td>21.8%</td>
+</tr>
+<tr>
+<td><strong>Hybrid Ensemble</strong></td>
+<td><strong>28.9</strong></td>
+<td><strong>42.3</strong></td>
+<td><strong>0.92</strong></td>
+<td><strong>17.2%</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%AA-testing--quality-assurance">🧪 Testing &amp; Quality Assurance</h2>
+<h3 id="backend-testing">Backend Testing</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> backend
+pytest tests/ -v --cov=app
+</div></code></pre>
+<h3 id="frontend-testing">Frontend Testing</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> frontend
+npm <span class="hljs-built_in">test</span>
+</div></code></pre>
+<h3 id="api-testing">API Testing</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Using the provided demo script</span>
+<span class="hljs-built_in">cd</span> AnantaNetra_AQI_Project
+python demo_test.py
+</div></code></pre>
+<h3 id="load-testing">Load Testing</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Test API endpoints under load</span>
+ab -n 1000 -c 10 http://localhost:8000/api/status/health
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%88-monitoring--analytics">📈 Monitoring &amp; Analytics</h2>
+<h3 id="system-health-monitoring">System Health Monitoring</h3>
+<ul>
+<li>Real-time API response times</li>
+<li>Cache hit/miss ratios</li>
+<li>External API usage statistics</li>
+<li>Error rates and fallback activations</li>
+</ul>
+<h3 id="performance-analytics">Performance Analytics</h3>
+<ul>
+<li>Prediction accuracy tracking</li>
+<li>User interaction patterns</li>
+<li>Geographic usage distribution</li>
+<li>System resource utilization</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A4%9D-contributing">🤝 Contributing</h2>
+<h3 id="development-workflow">Development Workflow</h3>
+<ol>
+<li>Fork the repository</li>
+<li>Create feature branch: <code>git checkout -b feature/amazing-feature</code></li>
+<li>Make changes and test thoroughly</li>
+<li>Commit with descriptive messages: <code>git commit -m 'Add amazing feature'</code></li>
+<li>Push to branch: <code>git push origin feature/amazing-feature</code></li>
+<li>Create Pull Request with detailed description</li>
+</ol>
+<h3 id="code-standards">Code Standards</h3>
+<ul>
+<li><strong>Backend:</strong> PEP 8 compliance, type hints, comprehensive docstrings</li>
+<li><strong>Frontend:</strong> ESLint rules, TypeScript strict mode, component documentation</li>
+<li><strong>Testing:</strong> 80%+ code coverage, integration tests for critical paths</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%9A-documentation--research">📚 Documentation &amp; Research</h2>
+<h3 id="available-documentation">Available Documentation</h3>
+<ul>
+<li><strong>Research Paper:</strong> <code>docs/AnantaNetra_Research_Paper.tex</code> (IEEE format)</li>
+<li><strong>Technical Docs:</strong> <code>docs/RESEARCH_PAPER_DOCUMENTATION.md</code></li>
+<li><strong>Hackathon Guide:</strong> <code>docs/HACKATHON_INSTRUCTIONS.md</code></li>
+<li><strong>API Documentation:</strong> Auto-generated at <code>/docs</code> endpoint</li>
+</ul>
+<h3 id="research-contributions">Research Contributions</h3>
+<ul>
+<li>Novel hybrid AI architecture for environmental prediction</li>
+<li>Comprehensive multi-source data integration framework</li>
+<li>Production-ready implementation with robust fallbacks</li>
+<li>Policy-aligned solution supporting NCAP objectives</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%90%9B-troubleshooting">🐛 Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<h4 id="backend-wont-start">Backend Won't Start</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check Python version</span>
+python --version
+
+<span class="hljs-comment"># Verify virtual environment</span>
+<span class="hljs-built_in">source</span> venv/bin/activate &amp;&amp; <span class="hljs-built_in">which</span> python
+
+<span class="hljs-comment"># Check API keys in .env</span>
+cat .env | grep -E <span class="hljs-string">"(API_KEY|KEY)"</span>
+</div></code></pre>
+<h4 id="frontend-build-fails">Frontend Build Fails</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Clear node_modules and reinstall</span>
+rm -rf node_modules package-lock.json
+npm install
+
+<span class="hljs-comment"># Check Node.js version</span>
+node --version
+npm --version
+</div></code></pre>
+<h4 id="api-connection-issues">API Connection Issues</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Test backend connectivity</span>
+curl http://localhost:8000/api/status/health
+
+<span class="hljs-comment"># Check Redis connection</span>
+docker ps | grep redis
+
+<span class="hljs-comment"># Verify API keys are loaded</span>
+docker logs anantanetra-backend
+</div></code></pre>
+<h4 id="docker-issues">Docker Issues</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stop all containers</span>
+docker-compose down
+
+<span class="hljs-comment"># Rebuild without cache</span>
+docker-compose build --no-cache
+
+<span class="hljs-comment"># Check container logs</span>
+docker-compose logs backend
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%9E-support--contact">📞 Support &amp; Contact</h2>
+<h3 id="project-team">Project Team</h3>
+<ul>
+<li><strong>Akshad Makhana</strong> - Backend Development &amp; ML Engineering</li>
+<li><strong>Yash Kolhe</strong> - Frontend Development &amp; UI/UX</li>
+<li><strong>Tejas Borkar</strong> - Data Engineering &amp; API Integration</li>
+<li><strong>Pranav Hadole</strong> - DevOps &amp; Infrastructure</li>
+<li><strong>Saurabh Turkane</strong> - Research &amp; Documentation</li>
+</ul>
+<h3 id="communication">Communication</h3>
+<ul>
+<li><strong>Email:</strong> [team-email@sanjivani.edu.in]</li>
+<li><strong>Institution:</strong> Sanjivani University, Department of CSE (AI &amp; DS)</li>
+<li><strong>Location:</strong> Maharashtra, India</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%9C-license">📜 License</h2>
+<p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+<p><strong>Research Use:</strong> The system and models are available for academic and research purposes. Commercial use requires separate licensing agreement.</p>
+<hr>
+<h2 id="%F0%9F%8E%89-acknowledgments">🎉 Acknowledgments</h2>
+<ul>
+<li><strong>Data Sources:</strong> CPCB, IMD, Ministry of Environment</li>
+<li><strong>Research Support:</strong> Sanjivani University faculty and infrastructure</li>
+<li><strong>Open Source:</strong> FastAPI, React, XGBoost, and other amazing libraries</li>
+<li><strong>Hackathon Organizers:</strong> For providing the platform and recognition</li>
+</ul>
+<hr>
+<p><em>🌍 AnantaNetra - Seeing the Invisible Threat: AI-powered environmental monitoring for a healthier India</em></p>
+<p><strong>Version:</strong> 1.0.0 | <strong>Last Updated:</strong> November 2025 | <strong>Status:</strong> Production Ready</p>
+
+</body>
+</html>
