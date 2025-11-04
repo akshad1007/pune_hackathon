@@ -55,6 +55,11 @@ ipython_config.py
 
 # Environments
 .env
+.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .venv
 env/
 venv/
@@ -94,4 +99,56 @@ reports/
 plots/
 figures/
 
+# Node.js dependencies (HUGE space saver)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend build outputs
+AnantaNetra_AQI_Project/frontend/dist/
+AnantaNetra_AQI_Project/frontend/build/
+*.tsbuildinfo
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/pincode_database.db
+data/pincode_master.db
+AnantaNetra_AQI_Project/data/demo/demo_system.db
+
+# Large data files (>50MB should not be in git)
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+data/dataset/*.xls
+data/dataset/*.xlsx
+data/dataset/*Forest*.csv
+data/dataset/*Vehicle*.csv
+data/dataset/combined_aqi_data.csv
+data/dataset/AllIndiaBulletins*.csv
+data/dataset/2011-IndiaStateDistSbDistTwn-*.csv
+shared/data/geospatial/*.shp
+shared/data/geospatial/*.shx
+shared/data/geospatial/*.dbf
+shared/data/geospatial/*.prj
+
+# PDF files (can be large)
+*.pdf
+docs/*.pdf
+
+# Large CSV files
+data/dataset/Pincode_Dataset.csv
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Docker volumes (if any)
 /source_repos/
